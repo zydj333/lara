@@ -9,5 +9,5 @@ class TempEmail extends Model
     protected $table = 'temp_email';
     protected $primaryKey = 'id';
 
-    public $timestamps = false;
+    public $timestamps = true;
 }
