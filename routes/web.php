@@ -12,8 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('login');
+//    return view('login');
 //    return \App\Entity\Member::all();
+    return date('Y-m-d H:i:s',time());
 });
 
 Route::get('/login', 'View\MemberController@toLogin');
@@ -21,3 +22,4 @@ Route::get('/login', 'View\MemberController@toLogin');
 Route::get('/register', 'View\MemberController@toRegister');
 
 Route::any('service/validate_code/create','Service\ValidateController@create');
+Route::any('service/validate_phone/send','Service\ValidateController@sendSMS');

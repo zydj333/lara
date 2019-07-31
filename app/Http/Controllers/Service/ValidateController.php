@@ -52,7 +52,7 @@ class ValidateController extends Controller
       }
       $tempPhone->phone = $phone;
       $tempPhone->code = $code;
-      $tempPhone->deadline = date('Y-m-d H-i-s', time() + 60*60);
+      $tempPhone->deadline = date('Y-m-d H:i:s', time() + 60*60);
       $tempPhone->save();
     }
 
