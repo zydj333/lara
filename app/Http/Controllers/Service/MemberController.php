@@ -65,7 +65,7 @@ class MemberController extends Controller
 
         $member = new Member;
         $member->phone = $phone;
-        $member->password = md5('bk' + $password);
+        $member->password = md5($password);
         $member->save();
 
         $m3_result->status = 0;
