@@ -12,6 +12,6 @@
 */
 
 Route::get('/', function () {
-//    return view('welcome');
-    return \App\Entity\Member::all();
+    return view('login');
+//    return \App\Entity\Member::all();
 });
