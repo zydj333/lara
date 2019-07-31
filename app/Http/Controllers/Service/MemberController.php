@@ -94,7 +94,7 @@ class MemberController extends Controller
 
       $member = new Member;
       $member->email = $email;
-      $member->password = md5('bk' + $password);
+      $member->password = md5($password);
       $member->save();
 
       $uuid = UUID::create();
@@ -103,14 +103,14 @@ class MemberController extends Controller
       $m3_email->to = $email;
       $m3_email->cc = 'magina@speakez.cn';
       $m3_email->subject = '凯恩书店验证';
-      $m3_email->content = '请于24小时点击该链接完成验证. http://book.magina.com/service/validate_email'
+      $m3_email->content = '请于24小时点击该链接完成验证. http://lara.com/service/validate_email'
                         . '?member_id=' . $member->id
                         . '&code=' . $uuid;
 
       $tempEmail = new TempEmail;
       $tempEmail->member_id = $member->id;
       $tempEmail->code = $uuid;
-      $tempEmail->deadline = date('Y-m-d H-i-s', time() + 24*60*60);
+      $tempEmail->deadline = date('Y-m-d H:i:s', time() + 24*60*60);
       $tempEmail->save();
 
       Mail::send('email_register', ['m3_email' => $m3_email], function ($m) use ($m3_email) {
